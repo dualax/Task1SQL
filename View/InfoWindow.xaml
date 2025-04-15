@@ -1,0 +1,87 @@
+﻿<Window x:Class="Task1SqlServer.View.InfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Task1SqlServer.View"
+         mc:Ignorable="d"
+         WindowStyle="None"
+         WindowStartupLocation="CenterScreen"
+         ResizeMode="NoResize"
+         Background="Transparent"
+         AllowsTransparency="True"
+         Title="MainWindow"
+         Height="550"
+         Width="950"
+         FontFamily="Consolas">
+    <Grid Background="#f5f5dc">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <DataGrid x:Name="DataUserInfo"
+                      FontSize="15"
+                      Height="320"
+                      Width="580"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserSortColumns="False"
+                      Background="Wheat"
+                      RowBackground="LightGray"
+                      AlternatingRowBackground="White"
+                      GridLinesVisibility="Horizontal"
+                      ColumnHeaderHeight="50"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserResizeRows="False"
+                      Effect="{StaticResource MaterialDesignElevationShadow16}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="Auto"
+                                        Header="Логин"
+                                        Binding="{Binding UserLogin}"
+                                        FontSize="15"
+                                        Foreground="Brown"/>
+                    <DataGridTextColumn Width="Auto"
+                                        Header="Пароль"
+                                        Binding="{Binding UserPassword}"
+                                        FontSize="15"
+                                        Foreground="Brown"/>
+                    <DataGridTextColumn Width="Auto"
+                                        Header="Номер телефона"
+                                        Binding="{Binding UserPhone}"
+                                        FontSize="15"
+                                        Foreground="Brown"/>
+                    <DataGridTextColumn Width="Auto"
+                                        Header="Электронная почта"
+                                        Binding="{Binding UserEmail}"
+                                        FontSize="15"
+                                        Foreground="Brown"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            </StackPanel>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Margin="0 0 0 30">
+            <Button BorderBrush="Brown"
+                    Background="Wheat"
+                    BorderThickness="1"
+                    x:Name="BtnBack"
+                    Click="BtnBack_Click"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                     materialDesign:ButtonProgressAssist.Value="-1"
+                     materialDesign:ButtonProgressAssist.IndicatorBackground="Wheat"
+                     materialDesign:ButtonProgressAssist.IndicatorForeground="Transparent"
+                     materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                     materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                     IsEnabled="{Binding DataContext.ControlsEnabled,
+                                         RelativeSource={RelativeSource FindAncestor,
+                                         AncestorType=Window}}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Update"
+                                             Margin="0 0 3 0"
+                                             Foreground="{Binding ElementName=BtnBack,
+                        Path=BorderBrush}"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
